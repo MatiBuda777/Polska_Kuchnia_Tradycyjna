@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph.xml">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/startFragment">
 
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.example.polska_kuchnia_tradycyjna.StartFragment"
+        android:label="fragment_start"
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment_to_menuChoiceFragment"
+            app:destination="@id/menuChoiceFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/menuChoiceFragment"
+        android:name="com.example.polska_kuchnia_tradycyjna.MenuChoiceFragment"
+        android:label="fragment_menu_choice"
+        tools:layout="@layout/fragment_menu_choice" >
+        <action
+            android:id="@+id/action_menuChoiceFragment_to_customMealFragment"
+            app:destination="@id/customMealFragment" />
+        <action
+            android:id="@+id/action_menuChoiceFragment_to_readyMealFragment"
+            app:destination="@id/readyMealFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/customMealFragment"
+        android:name="com.example.polska_kuchnia_tradycyjna.CustomMealFragment"
+        android:label="fragment_custom_meal"
+        tools:layout="@layout/fragment_custom_meal" />
+
+    <fragment
+        android:id="@+id/readyMealFragment"
+        android:name="com.example.polska_kuchnia_tradycyjna.ReadyMealFragment"
+        android:label="fragment_ready_meal"
+        tools:layout="@layout/fragment_ready_meal" />
+    <fragment
+        android:id="@+id/summaryFragment"
+        android:name="com.example.polska_kuchnia_tradycyjna.SummaryFragment"
+        android:label="fragment_summary"
+        tools:layout="@layout/fragment_summary" />
 </navigation>
