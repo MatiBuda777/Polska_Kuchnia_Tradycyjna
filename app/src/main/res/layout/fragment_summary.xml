@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,8 +13,21 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="10dp"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:textColor="@color/white"
         android:text="Twoje zamówienie:" />
 
-</FrameLayout>
+    <!-- Make a list of meals -->
+
+    <Button
+        android:id="@+id/buttonOrderAnother"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/white"
+        android:textSize="18sp"
+        android:textColor="@color/limonka_green"
+        android:text="Dodaj danie"/>
+
+</LinearLayout>

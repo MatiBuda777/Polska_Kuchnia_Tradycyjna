@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StartFragment"
-    android:background="#FF2412"
+    android:background="@color/red"
     android:orientation="vertical">
 
     <TextView
@@ -25,7 +25,7 @@
         android:layout_marginTop="50dp"
         android:backgroundTint="@color/white"
         android:textSize="18sp"
-        android:textColor="#21A700"
+        android:textColor="@color/limonka_green"
         android:text="Złóż zamówienie"/>
 
 </LinearLayout>

@@ -40,7 +40,7 @@ class MenuChoiceFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMenuChoiceBinding.inflate(layoutInflater)
+        _binding = FragmentMenuChoiceBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
