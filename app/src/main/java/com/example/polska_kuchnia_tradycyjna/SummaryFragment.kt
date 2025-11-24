@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.polska_kuchnia_tradycyjna.databinding.FragmentSummaryBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -49,6 +50,9 @@ class SummaryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // make summary for the order (: :)
+        binding.buttonAddAnother.setOnClickListener {
+            findNavController().navigate(R.id.action_summaryFragment_to_menuChoiceFragment)
+        }
     }
 
     companion object {

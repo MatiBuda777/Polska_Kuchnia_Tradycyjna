@@ -1,0 +1,18 @@
+1. Zupy
+-barszcz
+-ogórkowa
+-pomidorowa
+-rosół
+-żurek
+
+2. Drugie dania
+-bigos
+-kotlet mielony
+-kotlet schabowy
+-gołąbki
+-pierogi
+
+3. Desery
+-babka
+-makowiec
+-sernik

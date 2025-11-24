@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.navigation.fragment.findNavController
 import com.example.polska_kuchnia_tradycyjna.databinding.FragmentMenuChoiceBinding
 import com.example.polska_kuchnia_tradycyjna.databinding.FragmentReadyMealBinding
@@ -22,6 +23,9 @@ private const val ARG_PARAM2 = "param2"
 class ReadyMealFragment : Fragment() {
     private var _binding: FragmentReadyMealBinding? = null
     private val binding get() = _binding!!
+    private val _soups = listOf("Barszcz", "Ogórkowa", "Pomidorowa", "Rosół", "Żurek")
+    private val _mainCourses = listOf("Bigos")
+
     private var param1: String? = null
     private var param2: String? = null
 
@@ -50,6 +54,22 @@ class ReadyMealFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // make and handle ordering a meal
+        val adapterSoups = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_item,
+            _soups
+        )
+        adapterSoups.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinnerSelectSoup.adapter = adapterSoups
+
+
+        val adapterMainCourses = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_item,
+            _mainCourses
+        )
+        adapterMainCourses.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinnerSelectMainCourse.adapter = adapterMainCourses
 
         binding.buttonConfirmOrder.setOnClickListener {
             findNavController().navigate(R.id.action_readyMealFragment_to_summaryFragment)

@@ -20,8 +20,47 @@
             android:padding="10dp"
             android:background="@color/white"
             android:textSize="30sp"
-            android:textColor="@color/limonka_green"
+            android:textColor="@color/green"
             android:text="Wybór gotowych dań:" />
+
+
+        <!-- 1. Zupy -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/barszcz"
+                android:contentDescription="Zupa"
+                />
+            <Spinner
+                android:id="@+id/spinner_select_soup"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+
+        <!-- 2. Drugie dania -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/bigos"
+                android:contentDescription="Drugie danie"
+                />
+            <Spinner
+                android:id="@+id/spinner_select_mainCourse"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/buttonConfirmOrder"
@@ -31,7 +70,7 @@
             android:layout_marginTop="50dp"
             android:backgroundTint="@color/white"
             android:textSize="18sp"
-            android:textColor="@color/limonka_green"
+            android:textColor="@color/green"
             android:text="Zatwierdź"/>
     </LinearLayout>
 </ScrollView>

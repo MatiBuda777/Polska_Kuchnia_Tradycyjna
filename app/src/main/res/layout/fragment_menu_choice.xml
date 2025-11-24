@@ -33,7 +33,7 @@
             android:padding="15dp"
             android:backgroundTint="@color/white"
             android:textSize="15sp"
-            android:textColor="@color/limonka_green"
+            android:textColor="@color/green"
             android:text="Gotowe dania"/>
 
         <Button
@@ -45,7 +45,7 @@
             android:padding="15dp"
             android:backgroundTint="@color/white"
             android:textSize="15sp"
-            android:textColor="@color/limonka_green"
+            android:textColor="@color/green"
             android:text="Komponuj własne"/>
 
     </LinearLayout>

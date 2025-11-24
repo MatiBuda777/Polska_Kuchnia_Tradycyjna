@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/startFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Start"/>
+
+    <item
+        android:id="@+id/menuChoiceFragment"
+        android:icon="@drawable/ic_food"
+        android:title="Menu"/>
+
+    <item
+        android:id="@+id/summaryFragment"
+        android:icon="@drawable/ic_summary"
+        android:title="Podsumowanie"/>
+</menu>

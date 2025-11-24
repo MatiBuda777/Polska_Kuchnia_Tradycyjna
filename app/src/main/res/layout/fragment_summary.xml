@@ -13,21 +13,22 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="10dp"
+        android:background="@color/white"
+        android:textColor="@color/black"
         android:textSize="30sp"
-        android:textColor="@color/white"
         android:text="Twoje zamówienie:" />
 
     <!-- Make a list of meals -->
 
     <Button
-        android:id="@+id/buttonOrderAnother"
+        android:id="@+id/buttonAddAnother"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:backgroundTint="@color/white"
         android:textSize="18sp"
-        android:textColor="@color/limonka_green"
+        android:textColor="@color/green"
         android:text="Dodaj danie"/>
 
 </LinearLayout>

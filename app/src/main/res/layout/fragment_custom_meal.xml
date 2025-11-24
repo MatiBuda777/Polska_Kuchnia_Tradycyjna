@@ -20,7 +20,7 @@
             android:padding="10dp"
             android:background="@color/white"
             android:textSize="30sp"
-            android:textColor="@color/limonka_green"
+            android:textColor="@color/green"
             android:text="Skomponuj własne danie:" />
 
         <Button
@@ -31,7 +31,7 @@
             android:layout_marginTop="50dp"
             android:backgroundTint="@color/white"
             android:textSize="18sp"
-            android:textColor="@color/limonka_green"
+            android:textColor="@color/green"
             android:text="Zatwierdź"/>
     </LinearLayout>
 </ScrollView>
