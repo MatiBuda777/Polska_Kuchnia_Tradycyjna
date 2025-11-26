@@ -12,7 +12,7 @@
 -gołąbki
 -pierogi
 
-3. Desery
--babka
--makowiec
--sernik
+3. Napoje
+-herbata
+-kawa
+-kompot

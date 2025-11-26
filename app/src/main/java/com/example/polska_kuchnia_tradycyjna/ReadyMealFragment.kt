@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.navigation.fragment.findNavController
 import com.example.polska_kuchnia_tradycyjna.databinding.FragmentMenuChoiceBinding
@@ -24,7 +25,8 @@ class ReadyMealFragment : Fragment() {
     private var _binding: FragmentReadyMealBinding? = null
     private val binding get() = _binding!!
     private val _soups = listOf("Barszcz", "Ogórkowa", "Pomidorowa", "Rosół", "Żurek")
-    private val _mainCourses = listOf("Bigos")
+    private val _mainCourses = listOf("Bigos", "Kotlet mielony", "Kotlet schabowy", "Gołąbki", "Pierogi")
+    private val _drinks = listOf("Herbata", "Kawa", "Kompot Owocowy")
 
     private var param1: String? = null
     private var param2: String? = null
@@ -53,8 +55,9 @@ class ReadyMealFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // make and handle ordering a meal
-        val adapterSoups = ArrayAdapter(
+
+        // Adaptery
+        val adapterSoups = ArrayAdapter( // Adapter zupy
             requireContext(),
             android.R.layout.simple_spinner_item,
             _soups
@@ -62,8 +65,7 @@ class ReadyMealFragment : Fragment() {
         adapterSoups.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerSelectSoup.adapter = adapterSoups
 
-
-        val adapterMainCourses = ArrayAdapter(
+        val adapterMainCourses = ArrayAdapter( // Adapter drugiego dania
             requireContext(),
             android.R.layout.simple_spinner_item,
             _mainCourses
@@ -71,6 +73,92 @@ class ReadyMealFragment : Fragment() {
         adapterMainCourses.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerSelectMainCourse.adapter = adapterMainCourses
 
+        val adapterDrinks = ArrayAdapter( // Adapter drugiego dania
+            requireContext(),
+            android.R.layout.simple_spinner_item,
+            _drinks
+        )
+        adapterDrinks.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinnerSelectDrink.adapter = adapterDrinks
+
+
+        // Nasłuchiwacze
+        var selectedSoup = ""
+        var selectedDish = ""
+        var selectedDrink = ""
+
+
+        binding.spinnerSelectSoup.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                selectedSoup = parent?.getItemAtPosition(position).toString()
+                when (selectedSoup) {
+                    "Barszcz" -> binding.imageviewSoup.setImageResource(R.drawable.barszcz)
+                    "Ogórkowa" -> binding.imageviewSoup.setImageResource(R.drawable.ogorkowa)
+                    "Pomidorowa" -> binding.imageviewSoup.setImageResource(R.drawable.pomidorowa)
+                    "Rosół" -> binding.imageviewSoup.setImageResource(R.drawable.rosol)
+                    "Żurek" -> binding.imageviewSoup.setImageResource(R.drawable.zurek)
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("No Soup Selected")
+            }
+        }
+
+        binding.spinnerSelectMainCourse.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                selectedDish = parent?.getItemAtPosition(position).toString()
+                when (selectedDish) {
+                    "Bigos" -> binding.imageviewMainCourse.setImageResource(R.drawable.bigos)
+                    "Kotlet mielony" -> binding.imageviewMainCourse.setImageResource(R.drawable.kotlety_mielone)
+                    "Kotlet schabowy" -> binding.imageviewMainCourse.setImageResource(R.drawable.kotlet_schabowy)
+                    "Gołąbki" -> binding.imageviewMainCourse.setImageResource(R.drawable.golabki)
+                    "Pierogi" -> binding.imageviewMainCourse.setImageResource(R.drawable.pierogi)
+                }
+            }
+
+
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("No Main Course Selected")
+            }
+        }
+
+
+
+        binding.spinnerSelectDrink.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                selectedDrink = parent?.getItemAtPosition(position).toString()
+                when (selectedDrink) {
+                    "Herbata" -> binding.imageviewDrinks.setImageResource(R.drawable.herbata)
+                    "Kawa" -> binding.imageviewDrinks.setImageResource(R.drawable.kawa)
+                    "Kompot Owocowy" -> binding.imageviewDrinks.setImageResource(R.drawable.kompot)
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("No Drink Selected")
+            }
+        }
+
+
+
+        // Guzik
         binding.buttonConfirmOrder.setOnClickListener {
             findNavController().navigate(R.id.action_readyMealFragment_to_summaryFragment)
         }
