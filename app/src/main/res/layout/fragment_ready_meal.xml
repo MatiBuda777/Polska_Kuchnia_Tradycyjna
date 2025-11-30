@@ -24,63 +24,42 @@
             android:text="Wybór gotowych dań:" />
 
 
-        <!-- 1. Zupy -->
+        <!-- 1. Wybór dań -->
+        <RadioGroup
+            android:id="@+id/radioGroup_meals"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"/>
+
+
+        <!-- 2. Zdjęcia -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp">
             <ImageView
                 android:id="@+id/imageview_soup"
-                android:layout_width="200dp"
-                android:layout_height="170dp"
+                android:layout_width="130dp"
+                android:layout_height="120dp"
                 android:src="@drawable/barszcz"
                 android:contentDescription="Zupa"
                 />
-            <Spinner
-                android:id="@+id/spinner_select_soup"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_gravity="center"/>
-        </LinearLayout>
 
-
-        <!-- 2. Drugie dania -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp">
             <ImageView
                 android:id="@+id/imageview_mainCourse"
-                android:layout_width="200dp"
-                android:layout_height="170dp"
+                android:layout_width="130dp"
+                android:layout_height="120dp"
                 android:src="@drawable/bigos"
                 android:contentDescription="Drugie danie"
                 />
-            <Spinner
-                android:id="@+id/spinner_select_mainCourse"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_gravity="center"/>
-        </LinearLayout>
 
-
-        <!-- 3. Napoje -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp">
             <ImageView
                 android:id="@+id/imageview_drinks"
-                android:layout_width="200dp"
-                android:layout_height="170dp"
+                android:layout_width="130dp"
+                android:layout_height="120dp"
                 android:src="@drawable/herbata"
                 android:contentDescription="Napój"
                 />
-            <Spinner
-                android:id="@+id/spinner_select_drink"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_gravity="center"/>
         </LinearLayout>
 
 

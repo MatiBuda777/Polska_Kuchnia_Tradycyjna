@@ -20,6 +20,8 @@ private const val ARG_PARAM2 = "param2"
 class TotalBarFragment : Fragment() {
     private var _binding: FragmentTotalBarBinding? = null
     private val binding get() = _binding!!
+    var currentPrice = 0
+    var totalPrice = 0
 
     private var param1: String? = null
     private var param2: String? = null
@@ -48,7 +50,9 @@ class TotalBarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // total bar
+
+        val total = cart.getTotalPrice()
+        binding.totalBarTotalPrice.text = "Razem: $total zł"
     }
 
     companion object {

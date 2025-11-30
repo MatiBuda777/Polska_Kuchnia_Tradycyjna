@@ -15,16 +15,15 @@
         app:navGraph="@navigation/nav_graph"
         app:defaultNavHost="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"/>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/TotalBarFragmentContainer"
         android:name="com.example.polska_kuchnia_tradycyjna.TotalBarFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_weight="0.4"/>
+        android:layout_height="110dp"
+        android:layout_gravity="bottom"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"

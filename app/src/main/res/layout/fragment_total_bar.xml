@@ -24,6 +24,6 @@
         android:padding="10dp"
         android:textSize="30sp"
         android:textColor="@color/black"
-        android:text="Cena zamówienia: " />
+        android:text="Razem: " />
 
 </LinearLayout>
