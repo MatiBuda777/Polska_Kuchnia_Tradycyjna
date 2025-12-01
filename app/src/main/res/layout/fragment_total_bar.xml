@@ -15,7 +15,7 @@
         android:padding="10dp"
         android:textSize="20sp"
         android:textColor="@color/black"
-        android:text="Cena za posiłek: " />
+        android:text="Cena tego posiłku: " />
 
     <TextView
         android:id="@+id/totalBar_totalPrice"

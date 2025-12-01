@@ -19,6 +19,12 @@
         android:text="Twoje zamówienie:" />
 
     <!-- Make a list of meals -->
+    <ListView
+        android:id="@+id/listView_orders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"/>
 
     <Button
         android:id="@+id/buttonAddAnother"

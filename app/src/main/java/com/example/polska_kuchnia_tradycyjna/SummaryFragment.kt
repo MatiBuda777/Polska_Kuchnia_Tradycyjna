@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.navigation.fragment.findNavController
 import com.example.polska_kuchnia_tradycyjna.databinding.FragmentSummaryBinding
+import kotlinx.serialization.builtins.ArraySerializer
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,6 +52,21 @@ class SummaryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // make summary for the order (: :)
+
+        val adapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            mutableListOf<String>()
+        )
+        binding.listViewOrders.adapter = adapter
+
+        Cart.orders.observe(viewLifecycleOwner) { meals ->
+            val mealDesc = meals.map { "${it.soupName}, ${it.mainName}, ${it.drinkName} - ${it.price} zł" }
+            adapter.clear()
+            adapter.addAll(mealDesc)
+            adapter.notifyDataSetChanged()
+        }
+
         binding.buttonAddAnother.setOnClickListener {
             findNavController().navigate(R.id.action_summaryFragment_to_menuChoiceFragment)
         }
