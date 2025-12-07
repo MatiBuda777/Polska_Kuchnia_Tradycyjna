@@ -40,7 +40,7 @@ class TotalBarFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentTotalBarBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -52,9 +52,8 @@ class TotalBarFragment : Fragment() {
             binding.totalBarCurrentMealPrice.text = "Cena tego posiłku: ${it.price} zł"
         }
 
-        Cart.orders.observe(viewLifecycleOwner) { meals ->
-            val totalPrice = meals.sumOf { it.price }
-            binding.totalBarTotalPrice.text = "Razem: $totalPrice zł"
+        Cart.orders.observe(viewLifecycleOwner) {
+            binding.totalBarTotalPrice.text = "Razem: ${Cart.getTotalPrice()} zł"
         }
 
     }

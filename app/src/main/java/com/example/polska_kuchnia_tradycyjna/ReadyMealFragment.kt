@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
-import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import com.example.polska_kuchnia_tradycyjna.databinding.FragmentReadyMealBinding
 private const val ARG_PARAM1 = "param1"
@@ -49,7 +48,7 @@ class ReadyMealFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentReadyMealBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -75,9 +74,9 @@ class ReadyMealFragment : Fragment() {
 
             selectedMeal?.let {
                 Cart.setCurrentOrder(it)
-                binding.imageviewSoup.setImageResource(it.soupRes)
-                binding.imageviewMainCourse.setImageResource(it.mainRes)
-                binding.imageviewDrinks.setImageResource(it.drinkRes)
+                binding.imageviewSoup.setImageResource(it.soupRes!!)
+                binding.imageviewMainCourse.setImageResource(it.mainRes!!)
+                binding.imageviewDrinks.setImageResource(it.drinkRes!!)
             }
         }
 

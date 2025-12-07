@@ -27,6 +27,28 @@ class CustomMealFragment : Fragment() {
     private val _mainCourses = listOf("Bigos", "Kotlet mielony", "Kotlet schabowy", "Gołąbki", "Pierogi")
     private val _drinks = listOf("Herbata", "Kawa", "Kompot Owocowy")
 
+    private val _soupPrices = mapOf(
+        "Barszcz" to 9,
+        "Ogórkowa" to 8,
+        "Pomidorowa" to 7,
+        "Rosół" to 8,
+        "Żurek" to 10
+    )
+
+    private val _mainPrices = mapOf(
+        "Bigos" to 15,
+        "Kotlet mielony" to 14,
+        "Kotlet schabowy" to 16,
+        "Gołąbki" to 13,
+        "Pierogi" to 12
+    )
+
+    private val _drinkPrices = mapOf(
+        "Herbata" to 4,
+        "Kawa" to 6,
+        "Kompot Owocowy" to 3
+    )
+
     private var param1: String? = null
     private var param2: String? = null
 
@@ -46,17 +68,13 @@ class CustomMealFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentCustomMealBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.buttonConfirmOrder.setOnClickListener {
-            findNavController().navigate(R.id.action_customMealFragment_to_summaryFragment)
-        }
 
         // Adaptery
         val adapterSoups = ArrayAdapter( // Adapter zupy
@@ -88,16 +106,27 @@ class CustomMealFragment : Fragment() {
         var selectedSoup = ""
         var selectedDish = ""
         var selectedDrink = ""
+        var meal: Meal? = null
+
+        fun updateMeal(){ // Aktualizacja skomponowanego posiłku
+            val price = (_soupPrices[selectedSoup] ?: 0) +
+                    (_mainPrices[selectedDish] ?: 0) +
+                    (_drinkPrices[selectedDrink] ?: 0)
+
+            meal = Meal(
+                selectedSoup, selectedDish, selectedDrink,
+                soupRes = null, mainRes = null, drinkRes = null,
+                price
+            )
+            Cart.setCurrentOrder(meal)
+        }
 
 
         binding.spinnerSelectSoup.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)
+            {
                 selectedSoup = parent?.getItemAtPosition(position).toString()
+                updateMeal()
                 when (selectedSoup) {
                     "Barszcz" -> binding.imageviewSoup.setImageResource(R.drawable.barszcz)
                     "Ogórkowa" -> binding.imageviewSoup.setImageResource(R.drawable.ogorkowa)
@@ -113,13 +142,10 @@ class CustomMealFragment : Fragment() {
         }
 
         binding.spinnerSelectMainCourse.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)
+            {
                 selectedDish = parent?.getItemAtPosition(position).toString()
+                updateMeal()
                 when (selectedDish) {
                     "Bigos" -> binding.imageviewMainCourse.setImageResource(R.drawable.bigos)
                     "Kotlet mielony" -> binding.imageviewMainCourse.setImageResource(R.drawable.kotlety_mielone)
@@ -137,29 +163,25 @@ class CustomMealFragment : Fragment() {
 
 
         binding.spinnerSelectDrink.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)
+            {
                 selectedDrink = parent?.getItemAtPosition(position).toString()
+                updateMeal()
                 when (selectedDrink) {
-                    "Herbata" -> {
-                        binding.imageviewDrinks.setImageResource(R.drawable.herbata)
-                    }
-                    "Kawa" -> {
-                        binding.imageviewDrinks.setImageResource(R.drawable.kawa)
-                    }
-                    "Kompot Owocowy" -> {
-                        binding.imageviewDrinks.setImageResource(R.drawable.kompot)
-                    }
+                    "Herbata" -> binding.imageviewDrinks.setImageResource(R.drawable.herbata)
+                    "Kawa" -> binding.imageviewDrinks.setImageResource(R.drawable.kawa)
+                    "Kompot Owocowy" -> binding.imageviewDrinks.setImageResource(R.drawable.kompot)
                 }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 TODO("No Drink Selected")
             }
+        }
+
+        binding.buttonConfirmOrder.setOnClickListener {
+            if (meal !== null) Cart.addMeal(meal)
+            findNavController().navigate(R.id.action_customMealFragment_to_summaryFragment)
         }
     }
 
